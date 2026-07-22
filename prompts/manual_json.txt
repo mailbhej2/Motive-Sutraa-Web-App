@@ -1,0 +1,185 @@
+Create a highly engaging, emotional, and cinematic motivational story optimized for YouTube Shorts audience retention and AI video generation.
+
+Story Idea:
+<<STORY_IDEA>>
+
+Language:
+<<LANGUAGE>>
+
+Duration:
+<<DURATION>> minutes
+
+Target approximately <<SCENE_COUNT>> scenes based on the requested duration.
+
+Objective
+
+Generate a highly engaging, emotional, and cinematic motivational story specifically optimized for YouTube Shorts audience retention and AI video generation. The story should instantly capture attention, continuously build curiosity and emotional intensity, maximize watch time, and deliver a satisfying emotional payoff with a memorable motivational moral.
+
+Story Structure
+
+1. Start with an irresistible viral hook in the first scene (first 2–3 seconds).
+   - The opening must instantly make viewers curious enough to continue watching.
+   - Never begin with generic openings such as:
+     - "एक गांव में..."
+     - "एक लड़का रहता था..."
+     - "बहुत समय पहले..."
+   - Instead, begin with a shocking event, emotional question, impossible situation, mystery, surprising statement, or unexpected moment that immediately creates a "What happens next?" feeling.
+
+2. Gradually increase emotional intensity throughout the story.
+
+3. Introduce at least one believable but unexpected twist in the middle of the story.
+
+4. Build toward a powerful emotional climax.
+
+5. End with a memorable motivational moral that leaves a lasting emotional impact.
+
+Story Guidelines
+
+- Every scene must represent one unique visual moment.
+- Every scene should naturally connect to the next.
+- Each scene should create curiosity about the following scene.
+- Keep the pacing fast and engaging.
+- Avoid unnecessary filler scenes.
+- Every scene must either:
+  - increase curiosity,
+  - increase emotion,
+  - increase conflict,
+  - reveal important information,
+  - or move the story forward.
+- No scene should feel repetitive or unnecessary.
+- Keep emotions realistic and powerful.
+- Characters should naturally evolve throughout the story.
+- Show meaningful struggles before success.
+- Do not make success feel easy.
+- Avoid predictable storytelling whenever possible.
+- Introduce fresh, believable situations instead of common motivational clichés.
+- The ending should feel emotionally satisfying.
+
+Character Consistency
+
+Maintain complete character consistency throughout the story.
+
+When a character first appears, fully establish their appearance.
+
+After that, preserve the exact same:
+
+- Face
+- Hairstyle
+- Clothing
+- Age
+- Body type
+- Accessories
+- Personality
+- Expressions appropriate to the situation
+
+Do not redesign or contradict previously established character attributes.
+
+Scene Guidelines
+
+Each scene should contain only ONE important visual event.
+
+Do NOT combine multiple major events into one scene.
+
+Visuals should feel cinematic.
+
+Include:
+
+- Character emotions
+- Character actions
+- Background
+- Environment
+- Time of day
+- Lighting
+- Camera angle
+- Camera movement
+
+Image Prompt Guidelines
+
+Generate image prompts suitable for Disney Pixar Style Cartoon Animation.
+
+Every image prompt should naturally include:
+
+- Disney Pixar Cartoon Animation
+- Cinematic composition
+- Highly detailed visuals
+- Character consistency
+- Expressive facial expressions
+- Dramatic lighting
+- Depth of field
+- Beautiful environment
+- High-quality animation style
+- No text
+- No watermark
+
+Narration Guidelines
+
+Narration should sound like a professional Hindi storyteller speaking naturally to the audience.
+
+- Use natural conversational Hindi.
+- Avoid robotic wording.
+- Avoid book-like narration.
+- Keep narration emotional.
+- Avoid unnecessarily long sentences.
+- The first narration must immediately capture attention and create curiosity.
+- Every narration should smoothly connect to the next scene.
+
+Schema
+
+{
+  "title": "",
+  "language": "",
+  "duration": 0,
+  "scenes": [
+    {
+      "scene": 1,
+      "story_text": "",
+      "narration": "",
+      "visual_info": "",
+      "image_prompt": ""
+    }
+  ]
+}
+
+Field Guidelines
+
+story_text
+
+The complete story for that scene.
+
+narration
+
+Natural Hindi voice-over optimized for YouTube Shorts audience retention.
+
+The first narration must be a powerful viral hook.
+
+visual_info
+
+Describe:
+
+- Characters
+- Clothing
+- Facial expressions
+- Character emotions
+- Character actions
+- Background
+- Environment
+- Time of day
+- Lighting
+- Camera angle
+- Camera movement
+
+image_prompt
+
+Disney Pixar Cartoon Animation, cinematic composition, highly detailed, expressive characters, consistent characters, dramatic lighting, depth of field, masterpiece quality, beautiful environment, no text, no watermark.
+
+Output Rules
+
+- Return ONLY valid JSON.
+- Do NOT wrap JSON inside markdown.
+- Do NOT explain anything.
+- Do NOT omit any required fields.
+- Produce approximately <<SCENE_COUNT>> scenes.
+- Ensure Scene 1 immediately captures attention and makes viewers want to watch the next scene.
+- Ensure emotional intensity continuously increases until the climax.
+- Ensure every scene naturally leads into the next.
+- Ensure the story is original, emotionally powerful, and optimized for maximum YouTube Shorts audience retention.

@@ -24,10 +24,9 @@ class Generator:
         duration: int,
     ) -> int:
 
-        if duration <= 10:
-            return duration * 6
+        duration_in_sec = duration * 60
 
-        return duration * 4
+        return max(1, int(duration_in_sec / 6.0))
 
     # =========================================================
     # Manual Prompt

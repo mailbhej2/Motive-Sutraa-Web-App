@@ -24,19 +24,10 @@ class Generator:
         duration: int,
     ) -> int:
 
-        if duration <= 2:
-            return duration * 10
-
-        if duration <= 5:
-            return duration * 8
-
         if duration <= 10:
-            return duration * 7
-
-        if duration <= 20:
             return duration * 6
 
-        return duration * 5
+        return duration * 4
 
     # =========================================================
     # Manual Prompt

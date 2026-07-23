@@ -288,13 +288,12 @@ with tab_images:
             )
 
         for item in st.session_state.image_prompts:
-            st.markdown(f"**Photo {item['number']} — Scene {item['scene']}**")
-            st.code(
-                item["text"],
-                language="json",
-                height=220,
-            )
-
+            with st.expander(f"**Photo {item['number']} — Scene {item['scene']}**"):
+                st.code(
+                    item["text"],
+                    language="json",
+                    height=220,
+                )
 # ------------------------------------------------------
 # Scene / Video Prompt
 # ------------------------------------------------------

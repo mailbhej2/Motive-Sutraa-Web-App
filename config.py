@@ -48,7 +48,7 @@ DEFAULT_LANGUAGE = "Hindi"
 
 MIN_DURATION = 1
 MAX_DURATION = 60
-DEFAULT_DURATION = 2
+DEFAULT_DURATION = 10
 
 # ==========================================================
 # UI
@@ -101,6 +101,8 @@ IMAGES_DIR = OUTPUT_DIR / "images"
 VIDEOS_DIR = OUTPUT_DIR / "videos"
 JSON_DIR = OUTPUT_DIR / "json"
 EXPORTS_DIR = OUTPUT_DIR / "exports"
+
+LAST_JSON_FILE = JSON_DIR / "last_generation.json"
 
 ASSETS_DIR = BASE_DIR / "assets"
 

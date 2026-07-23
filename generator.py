@@ -2,6 +2,7 @@ import json
 
 from config import (
     IMAGE_SHOT_TYPE,
+    LAST_JSON_FILE,
     PROMPTS_DIR,
     VIDEO_MAIN_VISUAL_REFERENCE,
     VIDEO_SHOT_TYPE,
@@ -260,3 +261,47 @@ class Generator:
             for scene in scenes
 
         ]
+
+    # =========================================================
+    # Last Generated JSON (save / load)
+    # =========================================================
+
+    def save_last_json(
+        self,
+        data: dict,
+    ) -> None:
+        """
+        Persists the parsed Gemini JSON to disk, overwriting whatever
+        was saved from a previous "Generate Results" run.
+        """
+
+        LAST_JSON_FILE.write_text(
+            json.dumps(
+                data,
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+
+    def load_last_json(self):
+        """
+        Returns the previously saved JSON as a dict, or None if
+        nothing has been saved yet (or the file is unreadable).
+        """
+
+        if not LAST_JSON_FILE.exists():
+            return None
+
+        try:
+            return json.loads(
+                LAST_JSON_FILE.read_text(
+                    encoding="utf-8"
+                )
+            )
+        except json.JSONDecodeError:
+            return None
+
+    def has_last_json(self) -> bool:
+
+        return LAST_JSON_FILE.exists()

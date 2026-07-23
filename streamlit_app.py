@@ -1,3 +1,5 @@
+import json
+
 import streamlit as st
 
 from config import (
@@ -38,9 +40,39 @@ if "image_prompts" not in st.session_state:
 if "video_prompts" not in st.session_state:
     st.session_state.video_prompts = []
 
+if "json_box_text" not in st.session_state:
+    st.session_state.json_box_text = ""
+
 generator = st.session_state.generator
 
 st.title(APP_NAME)
+
+
+# ==========================================================
+# Shared: apply parsed Gemini JSON data into session state
+# ==========================================================
+
+def apply_generated_data(data: dict) -> int:
+    """
+    Populates session state from a parsed Gemini JSON dict.
+    Returns the number of scenes found (0 if none).
+    """
+
+    scenes = generator.get_scenes(data)
+
+    if not scenes:
+        return 0
+
+    st.session_state.data = data
+    st.session_state.scenes = scenes
+    st.session_state.image_prompts = (
+        generator.get_individual_image_prompts(scenes)
+    )
+    st.session_state.video_prompts = (
+        generator.create_all_video_prompts(scenes)
+    )
+
+    return len(scenes)
 
 
 # ==========================================================
@@ -131,12 +163,55 @@ with btn_col3:
 # Paste Gemini JSON
 # ==========================================================
 
-st.subheader("Paste Gemini JSON")
+json_header_col, json_load_col = st.columns([3, 1])
+
+with json_header_col:
+    st.subheader("Paste Gemini JSON")
+
+with json_load_col:
+    load_saved_clicked = st.button(
+        "Load Last Saved JSON",
+        use_container_width=True,
+        disabled=not generator.has_last_json(),
+    )
+
+if clear_clicked:
+    # Safe to set here: this runs BEFORE the text_area with this key
+    # is created below, in this same script pass.
+    st.session_state.json_box_text = ""
+
+if load_saved_clicked:
+    loaded_data = generator.load_last_json()
+
+    if loaded_data is None:
+        st.warning("No saved JSON found (or the saved file is corrupted).")
+    else:
+        # Safe to set here: this runs BEFORE the text_area with this
+        # key is created below, in this same script pass.
+        st.session_state.json_box_text = json.dumps(
+            loaded_data,
+            ensure_ascii=False,
+            indent=2,
+        )
+
+        scene_count = apply_generated_data(loaded_data)
+
+        if scene_count:
+            st.success(
+                f"Loaded last saved JSON and generated results for "
+                f"{scene_count} scenes."
+            )
+        else:
+            st.warning(
+                'The saved JSON does not contain a "scenes" list.'
+            )
+
 json_text = st.text_area(
     "Paste Gemini JSON",
     placeholder="Paste Gemini JSON here...",
     height=200,
     label_visibility="collapsed",
+    key="json_box_text",
 )
 
 
@@ -174,22 +249,16 @@ if generate_results_clicked:
             data = None
 
         if data is not None:
-            scenes = generator.get_scenes(data)
+            scene_count = apply_generated_data(data)
 
-            if not scenes:
+            if not scene_count:
                 st.warning(
                     'The pasted JSON does not contain a "scenes" list.'
                 )
             else:
-                st.session_state.data = data
-                st.session_state.scenes = scenes
-                st.session_state.image_prompts = (
-                    generator.get_individual_image_prompts(scenes)
-                )
-                st.session_state.video_prompts = (
-                    generator.create_all_video_prompts(scenes)
-                )
-                st.success(f"Generated results for {len(scenes)} scenes.")
+                # Overwrites whatever was saved from a previous run.
+                generator.save_last_json(data)
+                st.success(f"Generated results for {scene_count} scenes.")
 
 
 # ==========================================================

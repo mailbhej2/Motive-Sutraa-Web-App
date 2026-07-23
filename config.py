@@ -48,7 +48,7 @@ DEFAULT_LANGUAGE = "Hindi"
 
 MIN_DURATION = 1
 MAX_DURATION = 60
-DEFAULT_DURATION = 10
+DEFAULT_DURATION = 5
 
 # ==========================================================
 # UI

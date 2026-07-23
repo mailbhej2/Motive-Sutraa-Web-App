@@ -27,7 +27,7 @@ class Generator:
 
         duration_in_sec = duration * 60
 
-        return max(1, int(duration_in_sec / 10))
+        return max(1, int(duration_in_sec / 5))
 
     # =========================================================
     # Manual Prompt

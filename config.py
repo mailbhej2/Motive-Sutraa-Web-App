@@ -12,7 +12,7 @@ load_dotenv()
 # Application
 # ==========================================================
 
-APP_NAME = "Motive Sutraa AI Studio"
+APP_NAME = "Motive Sutraa ֎🇦🇮 Studio"
 APP_VERSION = "1.0"
 
 # ==========================================================

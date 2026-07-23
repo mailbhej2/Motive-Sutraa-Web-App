@@ -170,7 +170,7 @@ with json_header_col:
 
 with json_load_col:
     load_saved_clicked = st.button(
-        "Load Last Saved JSON",
+        "🔄️ Load Last Saved JSON",
         use_container_width=True,
         disabled=not generator.has_last_json(),
     )
